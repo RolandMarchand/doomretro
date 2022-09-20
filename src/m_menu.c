@@ -2696,6 +2696,7 @@ bool M_Responder(event_t *ev)
             && !splashscreen)
         {
             S_StartSound(NULL, sfx_scrsht);
+	    G_ScreenShot();
             memset(screens[0], nearestwhite, SCREENAREA);
             D_FadeScreen(true);
         }
@@ -3134,13 +3135,6 @@ bool M_Responder(event_t *ev)
     if (key == KEY_F11)
     {
         M_ChangeGamma(SDL_GetModState() & KMOD_SHIFT);
-        return false;
-    }
-
-    // screenshot
-    if (key == keyboardscreenshot && (keyboardscreenshot == KEY_PRINTSCREEN || gamestate == GS_LEVEL) && !splashscreen)
-    {
-        G_ScreenShot();
         return false;
     }
 
